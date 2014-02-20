@@ -44,6 +44,14 @@ class TestPortRange(unittest.TestCase):
         self.assertRaises(ValueError, PortRange, '66666')
         self.assertRaises(ValueError, PortRange, '0')
 
-    def test_comptation(self):
+    def test_strict_mode(self):
+        # Test power of two port base
+        PortRange('257', strict=True)
+        PortRange('257/16', strict=True)
+        self.assertRaises(ValueError, PortRange, '257/4', strict=True)
+        # Test overflowing upper bound
+        self.assertRaises(ValueError, PortRange, '65535/8', strict=True)
+
+    def test_computation(self):
         self.assertEqual(PortRange('2/3').bounds, (2, 8193))
         self.assertEqual(PortRange('7/3').bounds, (7, 8198))

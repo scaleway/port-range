@@ -42,7 +42,8 @@ class PortRange(object):
         # Enable rigorous rules
         if strict:
             # Disallow offsets
-            if self.prefix != self.port_lenght and not self._is_power_of_two(self.base):
+            if self.prefix != self.port_lenght and \
+                    not self._is_power_of_two(self.base):
                 raise ValueError("Port base is not a power of Two.")
             # Disallow overflowing CIDR
             if self._raw_upper_bound() > self.port_max:

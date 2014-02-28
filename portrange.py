@@ -73,6 +73,10 @@ class PortRange(object):
         elements += [None, None]
         return elements[:2]
 
+    def _raw_upper_bound(self):
+        """ Compute a raw upper bound. """
+        return self.lower_bound + (2 ** self.mask) - 1
+
     @property
     def mask(self):
         """ Port range binary mask, based on CIDR-like prefix.
@@ -90,10 +94,6 @@ class PortRange(object):
         """ Port range inclusive lower bound.
         """
         return self.base
-
-    def _raw_upper_bound(self):
-        """ Compute a raw upper bound. """
-        return self.lower_bound + (2 ** self.mask) - 1
 
     @property
     def upper_bound(self):

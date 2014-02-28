@@ -17,9 +17,9 @@ class PortRange(object):
     This mode can be disabled on object creation.
     """
 
-    # Max port lenght, in bytes
+    # Max port lenght, in bits
     port_lenght = 16
-    # Max port range, in integers
+    # Max port range integer values
     port_min = 1
     port_max = (2 ** port_lenght) - 1
 

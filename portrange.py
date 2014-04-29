@@ -190,4 +190,4 @@ class PortRange(object):
     @property
     def is_cidr(self):
         """ Is the range can be expressed using a CIDR-like notation. """
-        return True if self.prefix != None else False
+        return True if self.prefix is not None else False

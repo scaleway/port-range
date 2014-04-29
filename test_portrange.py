@@ -10,29 +10,69 @@ from portrange import PortRange
 
 class TestPortRange(unittest.TestCase):
 
-    def test_properties(self):
-        port = PortRange('1024/15')
-        self.assertEqual(str(port), '1024/15')
-        self.assertEqual(port.base, 1024)
+    def test_cidr_parsing(self):
+        self.assertEqual(PortRange('1027/15').bounds, (1027, 1028))
+        self.assertEqual(PortRange(' 1027 / 15 ').bounds, (1027, 1028))
+
+    def test_range_parsing(self):
+        self.assertEqual(PortRange('42-4242').bounds, (42, 4242))
+        self.assertEqual(PortRange('42').bounds, (42, 42))
+        self.assertEqual(PortRange(42).bounds, (42, 42))
+        self.assertEqual(PortRange([42]).bounds, (42, 42))
+        self.assertEqual(PortRange(['42']).bounds, (42, 42))
+        self.assertEqual(PortRange([42, 4242]).bounds, (42, 4242))
+        self.assertEqual(PortRange([4242, 42]).bounds, (42, 4242))
+        self.assertEqual(PortRange([None, 42]).bounds, (42, 42))
+        self.assertEqual(PortRange([42, None]).bounds, (42, 42))
+        self.assertEqual(PortRange([42, None, 32, 3]).bounds, (32, 42))
+        self.assertEqual(PortRange((4242, 42)).bounds, (42, 4242))
+        self.assertEqual(PortRange(set([4242, 42])).bounds, (42, 4242))
+
+    def test_cidr_properties(self):
+        port = PortRange('1027/15')
+        self.assertEqual(port.base, 1027)
         self.assertEqual(port.prefix, 15)
         self.assertEqual(port.mask, 1)
-        self.assertEqual(port.lower_bound, 1024)
-        self.assertEqual(port.upper_bound, 1025)
-        self.assertEqual(port.bounds, (1024, 1025))
+        self.assertEqual(port.offset, 3)
+        self.assertEqual(port.port_from, 1027)
+        self.assertEqual(port.port_to, 1028)
+        self.assertEqual(port.bounds, (1027, 1028))
+
+    def test_range_properties(self):
+        port = PortRange([4242, 42])
+        self.assertEqual(str(port), '42-4242')
+        self.assertEqual(port.base, 42)
+        self.assertEqual(port.prefix, None)
+        self.assertEqual(port.mask, None)
+        self.assertEqual(port.offset, 10)
+        self.assertEqual(port.port_from, 42)
+        self.assertEqual(port.port_to, 4242)
+        self.assertEqual(port.bounds, (42, 4242))
 
     def test_normalization(self):
         port = PortRange(' 0001234 ')
-        self.assertEqual(str(port), '1234/16')
+        self.assertEqual(str(port), '1234')
         self.assertEqual(port.base, 1234)
         self.assertEqual(port.prefix, 16)
         self.assertEqual(port.mask, 0)
-        self.assertEqual(port.lower_bound, 1234)
-        self.assertEqual(port.upper_bound, 1234)
+        self.assertEqual(port.offset, 210)
+        self.assertEqual(port.port_from, 1234)
+        self.assertEqual(port.port_to, 1234)
         self.assertEqual(port.bounds, (1234, 1234))
         # Upper bound cap
         self.assertEqual(PortRange('64666/3').bounds, (64666, 65535))
 
+    def test_output_string(self):
+        self.assertEqual(str(PortRange('1027/15')), '1027/15')
+        self.assertEqual(str(PortRange([42, 4242])), '42-4242')
+        self.assertEqual(str(PortRange(42)), '42')
+        self.assertEqual(str(PortRange([1027, 1028])), '1027/15')
+
     def test_validation(self):
+        # Test empty params
+        self.assertRaises(ValueError, PortRange, None)
+        self.assertRaises(ValueError, PortRange, [None])
+        self.assertRaises(ValueError, PortRange, [None, None])
         # Invalid int
         self.assertRaises(ValueError, PortRange, ' A233 ')
         # Test negative values

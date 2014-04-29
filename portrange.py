@@ -11,11 +11,14 @@ class PortRange(object):
     """ Port range with support of a CIDR-like (binary) notation.
 
     In strict mode (disabled by default) we'll enforce the following rules:
-        * port base must be a power of two (unless its CIDR is 32).
+        * port base must be a power of two (offsets not allowed);
         * port CIDR should not produce overflowing upper bound.
 
     This mode can be disabled on object creation.
     """
+    # Separators constants
+    CIDR_SEP = '/'
+    RANGE_SEP = '-'
 
     # Max port lenght, in bits
     port_lenght = 16
@@ -23,87 +26,168 @@ class PortRange(object):
     port_min = 1
     port_max = (2 ** port_lenght) - 1
 
+    # Base values on which all other properties are computed.
+    port_from = None
+    port_to = None
+
     def __init__(self, port_range, strict=False):
-        """ Parse and normalize port range string into a base and a prefix.
+        """ Set up class with a port_from and port_to integer. """
+        self.port_from, self.port_to = self.parse(port_range, strict=strict)
+
+    def parse(self, port_range, strict=False):
+        """ Parse and normalize port range string into a port range. """
+        if isinstance(port_range, basestring) and self.CIDR_SEP in port_range:
+            base, prefix = self.parse_cidr(port_range, strict)
+            port_from, port_to = self._cidr_to_range(base, prefix)
+        else:
+            port_from, port_to = self.parse_range(port_range)
+        if not port_from or not port_to:
+            raise ValueError("Invalid ports.")
+        # Check upper bound
+        if strict:
+            # Disallow overflowing upper bound
+            if port_to > self.port_max:
+                raise ValueError("Overflowing upper bound.")
+        else:
+            # Cap upper bound
+            port_to = port_to if port_to < self.port_max else self.port_max
+        return port_from, port_to
+
+    def parse_cidr(self, port_range, strict=False):
+        """ Split a string and extract port base and CIDR prefix.
+
+        Always returns a list of 2 integers. Defaults to None.
         """
         # Separate base and prefix
-        if isinstance(port_range, basestring):
-            self.base, self.prefix = self._split_prefix(port_range)
+        elements = list(itertools.imap(int,
+                                       port_range.split(self.CIDR_SEP, 2)))
+        elements += [None, None]
+        base, prefix = elements[:2]
         # Normalize prefix value
-        if self.prefix is None:
-            self.prefix = self.port_lenght
+        if prefix is None:
+            prefix = self.port_lenght
         # Validates base and prefix values
-        if not self.base or self.base < self.port_min or \
-                self.base > self.port_max:
+        if not base or base < self.port_min or base > self.port_max:
             raise ValueError("Invalid port base.")
-        if not self.prefix or self.prefix < 1 or \
-                self.prefix > self.port_lenght:
+        if not prefix or prefix < 1 or prefix > self.port_lenght:
             raise ValueError("Invalid CIDR-like prefix.")
         # Enable rigorous rules
         if strict:
             # Disallow offsets
-            if self.prefix != self.port_lenght and \
-                    not self._is_power_of_two(self.base):
+            if prefix != self.port_lenght and not self._is_power_of_two(base):
                 raise ValueError("Port base is not a power of Two.")
-            # Disallow overflowing CIDR
-            if self._raw_upper_bound() > self.port_max:
-                raise ValueError("Overflowing upper bound.")
+        return base, prefix
+
+    def parse_range(self, port_range):
+        """ Normalize port range to a sorted list of no more than 2 integers.
+
+        Excludes None values while parsing.
+        """
+        if isinstance(port_range, basestring):
+            port_range = port_range.split(self.RANGE_SEP, 2)
+        if not isinstance(port_range, (set, list, tuple)):
+            port_range = [port_range]
+        port_range = [int(port)
+                      for port in port_range
+                      if port and int(port)][:2]
+        port_range.sort()
+        # Fill out missing slots by None values
+        port_range += [None] * (2 - len(port_range))
+        port_from, port_to = port_range
+        if not port_from or port_from < self.port_min or \
+                port_from > self.port_max:
+            raise ValueError("Invalid port range lower bound.")
+        if not port_to:
+            port_to = port_from
+        return port_from, port_to
 
     def __repr__(self):
-        return '{}(base={!r}, prefix={!r}, mask={!r})'.format(
-            self.__class__.__name__, self.base, self.prefix, self.mask)
+        return '{}(port_from={}, port_to={}, base={}, offset={}, prefix={}, ' \
+            'mask={})'.format(self.__class__.__name__, self.port_from,
+                              self.port_to, self.base, self.offset,
+                              self.prefix, self.mask)
 
     def __str__(self):
-        return '{}/{}'.format(self.base, self.prefix)
+        """ Returns the most appropriate string representation. """
+        if self.is_single_port:
+            return str(self.port_from)
+        return self.cidr_string if self.is_cidr else self.range_string
 
-    def _is_power_of_two(self, value):
+    @property
+    def cidr_string(self):
+        """ Returns a clean CIDR-like notation. """
+        return '{}{}{}'.format(self.base, self.CIDR_SEP, self.prefix)
+
+    @property
+    def range_string(self):
+        """ Returns a clean range notation. """
+        return '{}{}{}'.format(self.port_from, self.RANGE_SEP, self.port_to)
+
+    @classmethod
+    def _is_power_of_two(cls, value):
         """ Helper to check if a value is a power of 2. """
         return math.log(value, 2) % 1 == 0
 
-    def _nearest_power_of_two(self, value):
+    @classmethod
+    def _nearest_power_of_two(cls, value):
         """ Returns nearsest power of 2. """
         return int(2 ** math.floor(math.log(value, 2)))
 
-    def _split_prefix(self, port):
-        """ Split a port range string and extract port base and CIDR prefix.
+    @classmethod
+    def _mask(cls, prefix):
+        return cls.port_lenght - prefix
 
-        Always returns a list of 2 integer. Defaults elements values to None.
-        """
-        elements = list(itertools.imap(int, port.split('/', 2)))
-        elements += [None, None]
-        return elements[:2]
-
-    def _raw_upper_bound(self):
+    @classmethod
+    def _raw_upper_bound(cls, base, prefix):
         """ Compute a raw upper bound. """
-        return self.lower_bound + (2 ** self.mask) - 1
+        return base + (2 ** cls._mask(prefix)) - 1
 
-    @property
-    def mask(self):
-        """ Port range binary mask, based on CIDR-like prefix.
-        """
-        return self.port_lenght - self.prefix
-
-    @property
-    def offset(self):
-        """ Port base offset from its nearest power of two.
-        """
-        return self.base - self._nearest_power_of_two(self.base)
-
-    @property
-    def lower_bound(self):
-        """ Port range inclusive lower bound.
-        """
-        return self.base
-
-    @property
-    def upper_bound(self):
-        """ Port range inclusive upper bound.
-        """
-        upper_bound = self._raw_upper_bound()
-        return upper_bound if upper_bound < self.port_max else self.port_max
+    @classmethod
+    def _cidr_to_range(cls, base, prefix):
+        port_from = base
+        port_to = cls._raw_upper_bound(base, prefix)
+        return port_from, port_to
 
     @property
     def bounds(self):
-        """ Produce inclusive lower and upper bounds of the port range.
-        """
-        return self.lower_bound, self.upper_bound
+        """ Returns lower and upper bounds of the port range. """
+        return self.port_from, self.port_to
+
+    @property
+    def base(self):
+        """ Alias to port_from, used as a starting point for CIDR notation. """
+        return self.port_from
+
+    @property
+    def offset(self):
+        """ Port base offset from its nearest power of two. """
+        return self.base - self._nearest_power_of_two(self.base)
+
+    @property
+    def prefix(self):
+        """ A power-of-two delta means a valid CIDR-like prefix. """
+        # Check that range delta is a power of 2
+        port_delta = self.port_to - self.port_from + 1
+        if not self._is_power_of_two(port_delta):
+            return None
+        return self.port_lenght - int(math.log(port_delta, 2))
+
+    @property
+    def mask(self):
+        """ Port range binary mask, based on CIDR-like prefix. """
+        return self._mask(self.prefix) if self.prefix else None
+
+    @property
+    def cidr(self):
+        """ Returns components of the CIDR-like notation. """
+        return self.base, self.prefix
+
+    @property
+    def is_single_port(self):
+        """ Is the range a single port ? """
+        return True if self.port_from == self.port_to else False
+
+    @property
+    def is_cidr(self):
+        """ Is the range can be expressed using a CIDR-like notation. """
+        return True if self.prefix != None else False

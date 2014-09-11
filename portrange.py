@@ -104,6 +104,7 @@ class PortRange(object):
         return port_from, port_to
 
     def __repr__(self):
+        """ Print all components of the range. """
         return '{}(port_from={}, port_to={}, base={}, offset={}, prefix={}, ' \
             'mask={})'.format(self.__class__.__name__, self.port_from,
                               self.port_to, self.base, self.offset,
@@ -137,6 +138,7 @@ class PortRange(object):
 
     @classmethod
     def _mask(cls, prefix):
+        """ Compute the mask. """
         return cls.port_lenght - prefix
 
     @classmethod
@@ -146,6 +148,7 @@ class PortRange(object):
 
     @classmethod
     def _cidr_to_range(cls, base, prefix):
+        """ Transform a CIDR-like notation into a port range. """
         port_from = base
         port_to = cls._raw_upper_bound(base, prefix)
         return port_from, port_to

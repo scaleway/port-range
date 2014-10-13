@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-""" Network utilities.
+""" Port range utilities and helpers.
 """
 
 from __future__ import (absolute_import, division, print_function,

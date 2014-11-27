@@ -6,7 +6,16 @@ from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
 import math
-import itertools
+
+try:
+    basestring
+except NameError:  # pragma: no cover
+    basestring = (str, bytes)  # pylint: disable=C0103
+
+try:
+    from itertools import imap as iter_map
+except ImportError:  # pragma: no cover
+    iter_map = map
 
 
 class PortRange(object):
@@ -61,8 +70,7 @@ class PortRange(object):
         Always returns a list of 2 integers. Defaults to None.
         """
         # Separate base and prefix
-        elements = list(itertools.imap(int,
-                                       port_range.split(self.CIDR_SEP, 2)))
+        elements = list(iter_map(int, port_range.split(self.CIDR_SEP, 2)))
         elements += [None, None]
         base, prefix = elements[:2]
         # Normalize prefix value

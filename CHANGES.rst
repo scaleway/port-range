@@ -5,7 +5,7 @@ ChangeLog
 1.0.1 (unreleased)
 ------------------
 
-* No changes yet.
+* Check code coverage thanks to coveralls.
 
 
 1.0.0 (2014-12-11)

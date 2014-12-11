@@ -9,8 +9,8 @@ Port range with support of CIDR-like notation.
 .. image:: https://travis-ci.org/online-labs/port-range.svg?branch=develop
     :target: https://travis-ci.org/online-labs/port-range
     :alt: Unit-tests status
-.. image:: https://coveralls.io/repos/online-labs/port-range/badge.png
-    :target: https://coveralls.io/r/online-labs/port-range
+.. image:: https://img.shields.io/coveralls/online-labs/port-range.svg
+    :target: https://coveralls.io/r/online-labs/port-range?branch=develop
     :alt: Coverage Status
 .. image:: https://requires.io/github/online-labs/port-range/requirements.svg?branch=master
     :target: https://requires.io/github/online-labs/port-range/requirements/?branch=master

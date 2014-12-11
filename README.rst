@@ -66,4 +66,4 @@ License
 
 This software is licensed under the `BSD 2-Clause License`_.
 
-.. _BSD 2-Clause License: https://github.com/online-labs/ocs-sdk/blob/develop/LICENSE.rst
+.. _BSD 2-Clause License: https://github.com/online-labs/port-range/blob/develop/LICENSE.rst

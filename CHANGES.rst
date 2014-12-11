@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-1.0.0 (unreleased)
+1.0.0 (2014-12-11)
 ------------------
 
 * Split out port range helpers into its own stand-alone package.

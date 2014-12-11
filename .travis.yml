@@ -5,7 +5,6 @@ python:
 install:
   - pip install -e .
   - pip install coveralls
-  - pip install nose
 script:
   - coverage run setup.py test
   - coverage report -m

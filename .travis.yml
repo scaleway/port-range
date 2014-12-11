@@ -4,6 +4,9 @@ python:
   - "3.4"
 install:
   - pip install -e .
+  - pip install python-coveralls
+  - pip install coverage
+  - pip install nose
 script:
   - coverage run --source=port_range setup.py test
   - coverage report -m

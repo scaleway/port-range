@@ -3,22 +3,22 @@ port-range
 
 Port range with support of CIDR-like notation.
 
-.. image:: https://badge.fury.io/py/port-range.svg
-    :target: http://badge.fury.io/py/port-range
+.. image:: https://img.shields.io/pypi/v/port-range.svg?style=flat
+    :target: https://pypi.python.org/pypi/port-range
     :alt: Last release
-.. image:: https://travis-ci.org/online-labs/port-range.svg?branch=develop
+.. image:: https://img.shields.io/travis/online-labs/port-range/develop.svg?style=flat
     :target: https://travis-ci.org/online-labs/port-range
     :alt: Unit-tests status
-.. image:: https://img.shields.io/coveralls/online-labs/port-range.svg
+.. image:: https://img.shields.io/coveralls/online-labs/port-range/develop.svg?style=flat
     :target: https://coveralls.io/r/online-labs/port-range?branch=develop
     :alt: Coverage Status
-.. image:: https://requires.io/github/online-labs/port-range/requirements.svg?branch=master
+.. image:: https://img.shields.io/requires/github/online-labs/port-range/master.svg?style=flat
     :target: https://requires.io/github/online-labs/port-range/requirements/?branch=master
     :alt: Requirements freshness
-.. image:: http://img.shields.io/pypi/l/port-range.svg
+.. image:: https://img.shields.io/pypi/l/port-range.svg?style=flat
     :target: http://opensource.org/licenses/BSD-2-Clause
     :alt: Software license
-.. image:: http://img.shields.io/pypi/dm/port-range.svg
+.. image:: https://img.shields.io/pypi/dm/port-range.svg?style=flat
     :target: https://pypi.python.org/pypi/port-range#downloads
     :alt: Popularity
 

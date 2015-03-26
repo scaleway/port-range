@@ -4,5 +4,9 @@ python:
   - "3.4"
 install:
   - pip install -e .
+  - pip install coveralls
 script:
-  - python setup.py nosetests --with-coverage
+  - coverage run setup.py test
+  - coverage report -m
+after_script:
+  coveralls --verbose

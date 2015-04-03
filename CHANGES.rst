@@ -5,7 +5,7 @@ ChangeLog
 1.0.2 (unreleased)
 ------------------
 
-* No changes yet.
+* Update reference from Online Labs to Scaleway.
 
 
 1.0.1 (2015-03-26)

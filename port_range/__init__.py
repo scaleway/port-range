@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2014-2015 Online SAS and Contributors. All Rights Reserved.
-#                         Kevin Deldycke <kdeldycke@ocs.online.net>
-#                         Gilles Dartiguelongue <gdartiguelongue@ocs.online.net>
+# Copyright (c) 2014-2015 Scaleway and Contributors. All Rights Reserved.
+#                         Kevin Deldycke <kdeldycke@scaleway.com>
+#                         Gilles Dartiguelongue <gdartiguelongue@scaleway.com>
 #
 # Licensed under the BSD 2-Clause License (the "License"); you may not use this
 # file except in compliance with the License. You may obtain a copy of the
@@ -27,7 +27,7 @@ except ImportError:  # pragma: no cover
     iter_map = map
 
 
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 
 
 class PortRange(object):

@@ -6,14 +6,14 @@ Port range with support of CIDR-like notation.
 .. image:: https://img.shields.io/pypi/v/port-range.svg?style=flat
     :target: https://pypi.python.org/pypi/port-range
     :alt: Last release
-.. image:: https://img.shields.io/travis/online-labs/port-range/develop.svg?style=flat
-    :target: https://travis-ci.org/online-labs/port-range
+.. image:: https://img.shields.io/travis/scaleway/port-range/develop.svg?style=flat
+    :target: https://travis-ci.org/scaleway/port-range
     :alt: Unit-tests status
-.. image:: https://img.shields.io/coveralls/online-labs/port-range/develop.svg?style=flat
-    :target: https://coveralls.io/r/online-labs/port-range?branch=develop
+.. image:: https://img.shields.io/coveralls/scaleway/port-range/develop.svg?style=flat
+    :target: https://coveralls.io/r/scaleway/port-range?branch=develop
     :alt: Coverage Status
-.. image:: https://img.shields.io/requires/github/online-labs/port-range/master.svg?style=flat
-    :target: https://requires.io/github/online-labs/port-range/requirements/?branch=master
+.. image:: https://img.shields.io/requires/github/scaleway/port-range/master.svg?style=flat
+    :target: https://requires.io/github/scaleway/port-range/requirements/?branch=master
     :alt: Requirements freshness
 .. image:: https://img.shields.io/pypi/l/port-range.svg?style=flat
     :target: http://opensource.org/licenses/BSD-2-Clause
@@ -69,4 +69,4 @@ License
 
 This software is licensed under the `BSD 2-Clause License`_.
 
-.. _BSD 2-Clause License: https://github.com/online-labs/port-range/blob/develop/LICENSE.rst
+.. _BSD 2-Clause License: https://github.com/scaleway/port-range/blob/develop/LICENSE.rst

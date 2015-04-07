@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2014-2015 Online SAS and Contributors. All Rights Reserved.
+# Copyright (c) 2014-2015 Scaleway and Contributors. All Rights Reserved.
 #                         Kevin Deldycke <kdeldycke@ocs.online.net>
 #
 # Licensed under the BSD 2-Clause License (the "License"); you may not use this
@@ -41,9 +41,9 @@ setup(
     description="Port range with support of CIDR-like notation",
     long_description=get_long_description(),
 
-    author='Online Labs',
-    author_email='opensource@labs.online.net',
-    url='http://github.com/online-labs/port-range',
+    author='Scaleway',
+    author_email='opensource@scaleway.com',
+    url='http://github.com/scaleway/port-range',
     license='BSD',
 
     install_requires=[],

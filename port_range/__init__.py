@@ -27,7 +27,7 @@ except ImportError:  # pragma: no cover
     iter_map = map
 
 
-__version__ = '1.0.2.dev'
+__version__ = '1.0.2'
 
 
 class PortRange(object):

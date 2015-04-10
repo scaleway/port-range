@@ -2,6 +2,13 @@ ChangeLog
 =========
 
 
+1.0.3 (2015-04-10)
+------------------
+
+* Raise exception when trying to render non-CIDR-like port ranges with a CIDR
+  notation.
+
+
 1.0.2 (2015-04-07)
 ------------------
 

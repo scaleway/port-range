@@ -27,7 +27,7 @@ except ImportError:  # pragma: no cover
     iter_map = map
 
 
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 
 
 class PortRange(object):
@@ -134,11 +134,17 @@ class PortRange(object):
         """ Returns the most appropriate string representation. """
         if self.is_single_port:
             return str(self.port_from)
-        return self.cidr_string if self.is_cidr else self.range_string
+        try:
+            return self.cidr_string
+        except ValueError:
+            return self.range_string
 
     @property
     def cidr_string(self):
-        """ Returns a clean CIDR-like notation. """
+        """ Returns a clean CIDR-like notation if possible. """
+        if not self.is_cidr:
+            raise ValueError(
+                "Range can't be rendered using a CIDR-like notation.")
         return '{}{}{}'.format(self.base, self.CIDR_SEP, self.prefix)
 
     @property

@@ -75,6 +75,12 @@ class TestPortRange(unittest.TestCase):
         self.assertEqual(str(PortRange(42)), '42')
         self.assertEqual(str(PortRange([1027, 1028])), '1027/15')
 
+    def test_cidr_string_rendering(self):
+        self.assertEqual(PortRange([32768, 65535]).cidr_string, '32768/1')
+        self.assertEqual(PortRange([32767, 65534]).cidr_string, '32767/1')
+        with self.assertRaises(ValueError):
+            PortRange([32767, 65535]).cidr_string
+
     def test_validation(self):
         # Test empty params
         self.assertRaises(ValueError, PortRange, None)

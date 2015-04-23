@@ -15,6 +15,9 @@ Port range with support of CIDR-like notation.
 .. image:: https://img.shields.io/requires/github/scaleway/port-range/master.svg?style=flat
     :target: https://requires.io/github/scaleway/port-range/requirements/?branch=master
     :alt: Requirements freshness
+.. image:: https://img.shields.io/scrutinizer/g/scaleway/port-range.svg?style=flat
+    :target: https://scrutinizer-ci.com/g/scaleway/port-range/?branch=develop
+    :alt: Code Quality
 .. image:: https://img.shields.io/pypi/l/port-range.svg?style=flat
     :target: http://opensource.org/licenses/BSD-2-Clause
     :alt: Software license

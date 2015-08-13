@@ -9,7 +9,7 @@ Port range with support of CIDR-like notation.
 .. image:: https://img.shields.io/travis/scaleway/port-range/develop.svg?style=flat
     :target: https://travis-ci.org/scaleway/port-range
     :alt: Unit-tests status
-.. image:: https://img.shields.io/coveralls/scaleway/port-range/develop.svg?style=flat
+.. image:: https://coveralls.io/repos/scaleway/port-range/badge.svg?branch=develop&service=github    
     :target: https://coveralls.io/r/scaleway/port-range?branch=develop
     :alt: Coverage Status
 .. image:: https://img.shields.io/requires/github/scaleway/port-range/master.svg?style=flat

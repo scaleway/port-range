@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-1.0.5 (unreleased)
+1.0.5 (2015-11-23)
 ------------------
 
 * Add bumpversion config.

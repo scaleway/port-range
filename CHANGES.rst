@@ -5,7 +5,7 @@ ChangeLog
 1.0.5 (unreleased)
 ------------------
 
-* No changes yet.
+* Add bumpversion config.
 
 
 1.0.4 (2015-11-23)

@@ -22,8 +22,8 @@ Development: |build| |quality| |coverage|
 .. |build| image:: https://img.shields.io/travis/scaleway/port-range/develop.svg?style=flat
     :target: https://travis-ci.org/scaleway/port-range
     :alt: Unit-tests status
-.. |coverage| image::  https://coveralls.io/repos/scaleway/port-range/badge.svg?branch=develop&service=github
-    :target: https://coveralls.io/r/scaleway/port-range?branch=develop
+.. |coverage| image:: https://codecov.io/github/scaleway/port-range/coverage.svg?branch=develop
+    :target: https://codecov.io/github/scaleway/port-range?branch=develop
     :alt: Coverage Status
 .. |quality| image:: https://img.shields.io/scrutinizer/g/scaleway/port-range.svg?style=flat
     :target: https://scrutinizer-ci.com/g/scaleway/port-range/?branch=develop

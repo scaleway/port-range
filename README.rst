@@ -3,27 +3,31 @@ port-range
 
 Port range with support of CIDR-like notation.
 
-.. image:: https://img.shields.io/pypi/v/port-range.svg?style=flat
+Stable release: |release| |license| |dependencies| |popularity|
+
+Development: |build| |quality| |coverage|
+
+.. |release| image:: https://img.shields.io/pypi/v/port-range.svg?style=flat
     :target: https://pypi.python.org/pypi/port-range
     :alt: Last release
-.. image:: https://img.shields.io/travis/scaleway/port-range/develop.svg?style=flat
-    :target: https://travis-ci.org/scaleway/port-range
-    :alt: Unit-tests status
-.. image:: https://coveralls.io/repos/scaleway/port-range/badge.svg?branch=develop&service=github    
-    :target: https://coveralls.io/r/scaleway/port-range?branch=develop
-    :alt: Coverage Status
-.. image:: https://img.shields.io/requires/github/scaleway/port-range/master.svg?style=flat
-    :target: https://requires.io/github/scaleway/port-range/requirements/?branch=master
-    :alt: Requirements freshness
-.. image:: https://img.shields.io/scrutinizer/g/scaleway/port-range.svg?style=flat
-    :target: https://scrutinizer-ci.com/g/scaleway/port-range/?branch=develop
-    :alt: Code Quality
-.. image:: https://img.shields.io/pypi/l/port-range.svg?style=flat
+.. |license| image:: https://img.shields.io/pypi/l/port-range.svg?style=flat
     :target: http://opensource.org/licenses/BSD-2-Clause
     :alt: Software license
-.. image:: https://img.shields.io/pypi/dm/port-range.svg?style=flat
+.. |popularity| image:: https://img.shields.io/pypi/dm/port-range.svg?style=flat
     :target: https://pypi.python.org/pypi/port-range#downloads
     :alt: Popularity
+.. |dependencies| image:: https://img.shields.io/requires/github/scaleway/port-range/master.svg?style=flat
+    :target: https://requires.io/github/scaleway/port-range/requirements/?branch=master
+    :alt: Requirements freshness
+.. |build| image:: https://img.shields.io/travis/scaleway/port-range/develop.svg?style=flat
+    :target: https://travis-ci.org/scaleway/port-range
+    :alt: Unit-tests status
+.. |coverage| image::  https://coveralls.io/repos/scaleway/port-range/badge.svg?branch=develop&service=github
+    :target: https://coveralls.io/r/scaleway/port-range?branch=develop
+    :alt: Coverage Status
+.. |quality| image:: https://img.shields.io/scrutinizer/g/scaleway/port-range.svg?style=flat
+    :target: https://scrutinizer-ci.com/g/scaleway/port-range/?branch=develop
+    :alt: Code Quality
 
 
 Features

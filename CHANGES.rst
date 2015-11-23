@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-1.0.4 (unreleased)
+1.0.4 (2015-11-23)
 ------------------
 
 * Switch from coveralls.io to codecov.io.

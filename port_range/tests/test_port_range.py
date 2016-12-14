@@ -7,8 +7,12 @@
 # file except in compliance with the License. You may obtain a copy of the
 # License at http://opensource.org/licenses/BSD-2-Clause
 
-from __future__ import (unicode_literals, print_function, absolute_import,
-                        division)
+from __future__ import (
+    absolute_import,
+    division,
+    print_function,
+    unicode_literals
+)
 
 import unittest
 

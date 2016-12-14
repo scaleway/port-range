@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2014-2015 Scaleway and Contributors. All Rights Reserved.
+# Copyright (c) 2014-2016 Scaleway and Contributors. All Rights Reserved.
 #                         Kevin Deldycke <kdeldycke@ocs.online.net>
 #
 # Licensed under the BSD 2-Clause License (the "License"); you may not use this

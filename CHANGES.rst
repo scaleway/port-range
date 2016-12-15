@@ -6,7 +6,7 @@ ChangeLog
 ------------------
 
 * Add default ``isort`` config.
-* Run unittests against Python 3.3, Python 3.5, PyPy2 and PyPy3.
+* Run unittests against Python 3.3, 3.5, 3.6-dev, 3.7-dev, PyPy2.7 and PyPy3.3.
 * Move ``coverage`` config to ``setup.cfg``.
 
 

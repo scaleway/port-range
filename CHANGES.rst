@@ -8,6 +8,8 @@ ChangeLog
 * Add default ``isort`` config.
 * Run unittests against Python 3.3, 3.5, 3.6-dev, 3.7-dev, PyPy2.7 and PyPy3.3.
 * Move ``coverage`` config to ``setup.cfg``.
+* Remove popularity badge: PyPI download counters are broken and no longer
+  displayed.
 * Make wheels generated under Python 2 environnment available for Python 3 too.
 
 

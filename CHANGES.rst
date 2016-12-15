@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-`1.0.6 (unreleased) <https://github.com/scaleway/port-range/compare/v1.0.5...develop>`_
+`1.1.0 (unreleased) <https://github.com/scaleway/port-range/compare/v1.0.5...develop>`_
 ---------------------------------------------------------------------------------------
 
 * Add default ``isort`` config.

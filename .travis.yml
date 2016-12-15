@@ -35,4 +35,4 @@ script:
   - coverage report -m
 
 after_script:
-  codecov
+  - codecov

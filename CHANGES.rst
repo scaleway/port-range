@@ -14,13 +14,13 @@ ChangeLog
 `1.0.5 (2015-11-23) <http://github.com/scaleway/port-range/compare/v1.0.4...v1.0.5>`_
 -------------------------------------------------------------------------------------
 
-* Add bumpversion config.
+* Add ``bumpversion`` config.
 
 
 `1.0.4 (2015-11-23) <http://github.com/scaleway/port-range/compare/v1.0.3...v1.0.4>`_
 -------------------------------------------------------------------------------------
 
-* Switch from coveralls.io to codecov.io.
+* Switch from ``coveralls.io`` to ``codecov.io``.
 
 
 `1.0.3 (2015-04-10) <http://github.com/scaleway/port-range/compare/v1.0.2...v1.0.3>`_
@@ -39,7 +39,7 @@ ChangeLog
 `1.0.1 (2015-03-26) <http://github.com/scaleway/port-range/compare/v1.0.0...v1.0.1>`_
 -------------------------------------------------------------------------------------
 
-* Check code coverage thanks to coveralls.
+* Check code coverage thanks to ``coveralls.io``.
 
 
 `1.0.0 (2014-12-11) <http://github.com/scaleway/port-range/compare/v0.1.0...v1.0.0>`_

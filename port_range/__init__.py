@@ -55,19 +55,20 @@ class PortRange(object):
 
     def __init__(self, port_range, strict=False):
         """ Set up class with a port_from and port_to integer. """
-        self.port_from, self.port_to = self.parse(port_range, strict=strict)
+        self.strict = strict
+        self.port_from, self.port_to = self.parse(port_range)
 
-    def parse(self, port_range, strict=False):
+    def parse(self, port_range):
         """ Parse and normalize port range string into a port range. """
         if isinstance(port_range, basestring) and self.CIDR_SEP in port_range:
-            base, prefix = self.parse_cidr(port_range, strict)
+            base, prefix = self.parse_cidr(port_range)
             port_from, port_to = self._cidr_to_range(base, prefix)
         else:
             port_from, port_to = self.parse_range(port_range)
         if not port_from or not port_to:
             raise ValueError("Invalid ports.")
         # Check upper bound
-        if strict:
+        if self.strict:
             # Disallow overflowing upper bound
             if port_to > self.port_max:
                 raise ValueError("Overflowing upper bound.")
@@ -76,7 +77,7 @@ class PortRange(object):
             port_to = port_to if port_to < self.port_max else self.port_max
         return port_from, port_to
 
-    def parse_cidr(self, port_range, strict=False):
+    def parse_cidr(self, port_range):
         """ Split a string and extract port base and CIDR prefix.
 
         Always returns a list of 2 integers. Defaults to None.
@@ -94,7 +95,7 @@ class PortRange(object):
         if not prefix or prefix < 1 or prefix > self.port_lenght:
             raise ValueError("Invalid CIDR-like prefix.")
         # Enable rigorous rules
-        if strict:
+        if self.strict:
             # Disallow offsets
             if prefix != self.port_lenght and not self._is_power_of_two(base):
                 raise ValueError("Port base is not a power of Two.")

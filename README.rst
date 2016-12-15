@@ -14,7 +14,7 @@ Development: |build| |coverage| |quality|
     :target: https://pypi.python.org/pypi/port-range
     :alt: Python versions
 .. |license| image:: https://img.shields.io/pypi/l/port-range.svg
-    :target: http://opensource.org/licenses/BSD-2-Clause
+    :target: https://opensource.org/licenses/BSD-2-Clause
     :alt: Software license
 .. |dependencies| image:: https://requires.io/github/scaleway/port-range/requirements.svg?branch=master
     :target: https://requires.io/github/scaleway/port-range/requirements/?branch=master

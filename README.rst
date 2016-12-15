@@ -5,7 +5,7 @@ Port range with support of CIDR-like notation.
 
 Stable release: |release| |versions| |license| |dependencies|
 
-Development: |build| |docs| |coverage| |quality|
+Development: |build| |coverage| |quality|
 
 .. |release| image:: https://img.shields.io/pypi/v/port-range.svg
     :target: https://pypi.python.org/pypi/port-range

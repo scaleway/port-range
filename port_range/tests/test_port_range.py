@@ -108,6 +108,7 @@ class TestPortRange(unittest.TestCase):
         self.assertRaises(ValueError, PortRange, '1024/17')
         self.assertRaises(ValueError, PortRange, '66666')
         self.assertRaises(ValueError, PortRange, '0')
+        self.assertRaises(ValueError, PortRange, '10-66666', strict=True)
 
     def test_strict_mode(self):
         # Test power of two port base

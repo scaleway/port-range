@@ -8,6 +8,7 @@ ChangeLog
 * Add default ``isort`` config.
 * Run unittests against Python 3.3, 3.5, 3.6-dev, 3.7-dev, PyPy2.7 and PyPy3.3.
 * Move ``coverage`` config to ``setup.cfg``.
+* Make wheels generated under Python 2 environnment available for Python 3 too.
 
 
 `1.0.5 (2015-11-23) <http://github.com/scaleway/port-range/compare/v1.0.4...v1.0.5>`_

@@ -7,10 +7,18 @@ ChangeLog
 
 * Add default ``isort`` config.
 * Run unittests against Python 3.3, 3.5, 3.6-dev, 3.7-dev, PyPy2.7 and PyPy3.3.
-* Move ``coverage`` config to ``setup.cfg``.
 * Remove popularity badge: PyPI download counters are broken and no longer
   displayed.
+* Move ``coverage`` config to ``setup.cfg``.
+* Add ``test`` and ``develop`` dependencies.
+* Only show latest changes in the long description of the package instead of
+  the full changelog.
+* Replace ``pep8`` package by ``pycodestyle``.
+* Enforce ``pycodestyle`` checks in Travis CI jobs.
+* Test production of packages in Travis CI jobs.
+* Always check for package metadata in Travis CI jobs.
 * Make wheels generated under Python 2 environnment available for Python 3 too.
+* Add link to full changelog in package's long description.
 
 
 `1.0.5 (2015-11-23) <https://github.com/scaleway/port-range/compare/v1.0.4...v1.0.5>`_

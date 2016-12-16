@@ -31,6 +31,7 @@ __version__ = '1.1.0'
 
 
 class PortRange(object):
+
     """ Port range with support of a CIDR-like (binary) notation.
 
     In strict mode (disabled by default) we'll enforce the following rules:
@@ -39,11 +40,12 @@ class PortRange(object):
 
     This mode can be disabled on object creation.
     """
-    # Separators constants
+
+    # Separators constants for CIDR and range notation.
     CIDR_SEP = '/'
     RANGE_SEP = '-'
 
-    # Max port lenght, in bits
+    # Max port lenght, in bits.
     port_lenght = 16
     # Max port range integer values
     port_min = 1
@@ -132,7 +134,7 @@ class PortRange(object):
                               self.prefix, self.mask)
 
     def __str__(self):
-        """ Returns the most appropriate string representation. """
+        """ Return the most appropriate string representation. """
         if self.is_single_port:
             return str(self.port_from)
         try:
@@ -142,7 +144,7 @@ class PortRange(object):
 
     @property
     def cidr_string(self):
-        """ Returns a clean CIDR-like notation if possible. """
+        """ Return a clean CIDR-like notation if possible. """
         if not self.is_cidr:
             raise ValueError(
                 "Range can't be rendered using a CIDR-like notation.")
@@ -150,7 +152,7 @@ class PortRange(object):
 
     @property
     def range_string(self):
-        """ Returns a clean range notation. """
+        """ Return a clean range notation. """
         return '{}{}{}'.format(self.port_from, self.RANGE_SEP, self.port_to)
 
     @classmethod
@@ -160,7 +162,7 @@ class PortRange(object):
 
     @classmethod
     def _nearest_power_of_two(cls, value):
-        """ Returns nearsest power of 2. """
+        """ Return nearsest power of 2. """
         return int(2 ** math.floor(math.log(value, 2)))
 
     @classmethod
@@ -182,7 +184,7 @@ class PortRange(object):
 
     @property
     def bounds(self):
-        """ Returns lower and upper bounds of the port range. """
+        """ Return lower and upper bounds of the port range. """
         return self.port_from, self.port_to
 
     @property
@@ -211,15 +213,15 @@ class PortRange(object):
 
     @property
     def cidr(self):
-        """ Returns components of the CIDR-like notation. """
+        """ Return components of the CIDR-like notation. """
         return self.base, self.prefix
 
     @property
     def is_single_port(self):
-        """ Is the range a single port ? """
+        """ Is the range a single port? """
         return True if self.port_from == self.port_to else False
 
     @property
     def is_cidr(self):
-        """ Is the range can be expressed using a CIDR-like notation. """
+        """ Is the range can be expressed using a CIDR-like notation? """
         return True if self.prefix is not None else False

@@ -15,18 +15,17 @@ from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
 import math
-import sys
 from collections import Iterable
-
 
 try:
     from itertools import imap as iter_map
 except ImportError:  # pragma: no cover
     iter_map = map
 
-PY3 = sys.version_info == 3
-if PY3:
-    basestring = (str, bytes)
+try:
+    basestring
+except NameError:  # pragma: no cover
+    basestring = (str, bytes)  # pylint: disable=C0103
 
 __version__ = '2.0.0'
 

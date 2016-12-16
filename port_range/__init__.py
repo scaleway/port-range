@@ -128,10 +128,12 @@ class PortRange(object):
 
     def __repr__(self):
         """ Print all components of the range. """
-        return '{}(port_from={}, port_to={}, base={}, offset={}, prefix={}, ' \
-            'mask={})'.format(self.__class__.__name__, self.port_from,
-                              self.port_to, self.base, self.offset,
-                              self.prefix, self.mask)
+        return (
+            '{}(port_from={}, port_to={}, base={}, offset={}, prefix={}, '
+            'mask={}, is_single_port={}, is_cidr={})').format(
+                self.__class__.__name__, self.port_from, self.port_to,
+                self.base, self.offset, self.prefix, self.mask,
+                self.is_single_port, self.is_cidr)
 
     def __str__(self):
         """ Return the most appropriate string representation. """

@@ -85,7 +85,7 @@ class TestPortRange(unittest.TestCase):
         self.assertEqual(
             repr(PortRange([1027, 1028])),
             "PortRange(port_from=1027, port_to=1028, base=1027, offset=3, "
-            "prefix=15, mask=1)")
+            "prefix=15, mask=1, is_single_port=False, is_cidr=True)")
 
     def test_cidr_string_rendering(self):
         self.assertEqual(PortRange([32768, 65535]).cidr_string, '32768/1')

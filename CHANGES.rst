@@ -5,6 +5,8 @@ ChangeLog
 `1.1.0 (unreleased) <https://github.com/scaleway/port-range/compare/v1.0.5...develop>`_
 ---------------------------------------------------------------------------------------
 
+* Refactor parsing. Makes normal mode stricter and ``strict`` mode more
+  rigorous.
 * Expose ``is_single_port`` and ``is_cidr`` properties in ``repr()``.
 * Add default ``isort`` config.
 * Run unittests against Python 3.3, 3.5, 3.6-dev, 3.7-dev, PyPy2.7 and PyPy3.3.

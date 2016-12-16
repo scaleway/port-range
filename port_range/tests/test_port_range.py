@@ -48,6 +48,7 @@ class TestPortRange(unittest.TestCase):
         # Invalid types and lenght.
         self.assertRaises(ValueError, PortRange, [None, 42])
         self.assertRaises(ValueError, PortRange, [42, None])
+        self.assertRaises(ValueError, PortRange, [42, 32, 3])
         self.assertRaises(ValueError, PortRange, [42, None, 32, 3, -4])
 
     def test_strict_range_parsing(self):
@@ -77,6 +78,7 @@ class TestPortRange(unittest.TestCase):
         # Invalid types and lenght.
         self.assertRaises(ValueError, PortRange, [None, 42], True)
         self.assertRaises(ValueError, PortRange, [42, None], True)
+        self.assertRaises(ValueError, PortRange, [42, 32, 3], True)
         self.assertRaises(ValueError, PortRange, [42, None, 32, 3, -4], True)
 
     def test_cidr_properties(self):

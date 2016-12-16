@@ -8,6 +8,7 @@ ChangeLog
 * Refactor parsing. Makes normal mode stricter and ``strict`` mode more
   rigorous.
 * Expose ``is_single_port`` and ``is_cidr`` properties in ``repr()``.
+* Unittests covers 100% of code.
 * Add default ``isort`` config.
 * Run unittests against Python 3.3, 3.5, 3.6-dev, 3.7-dev, PyPy2.7 and PyPy3.3.
 * Remove popularity badge: PyPI download counters are broken and no longer

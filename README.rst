@@ -56,6 +56,19 @@ Parse and normalize port ranges:
     >>> str(pr)
     '42-4242'
 
+Enforce strong validatation in ``strict`` mode:
+
+.. code-block:: python
+
+    >>> PortRange(' 4242-42 ', strict=True)
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "port_range/__init__.py", line 62, in __init__
+        self.port_from, self.port_to = self.parse(port_range)
+      File "port_range/__init__.py", line 109, in parse
+        raise ValueError("Invalid reversed port range.")
+    ValueError: Invalid reversed port range.
+
 Access to decimal-representation properties:
 
 .. code-block:: python

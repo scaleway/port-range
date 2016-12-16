@@ -52,9 +52,12 @@ class TestPortRange(unittest.TestCase):
 
     def test_strict_range_parsing(self):
         # Normal range.
-        self.assertEqual(PortRange('42-4242', strict=True).bounds, (42, 4242))
-        self.assertEqual(PortRange([42, 4242], strict=True).bounds, (42, 4242))
-        self.assertEqual(PortRange(['42', '4242'], strict=True).bounds, (42, 4242))
+        self.assertEqual(
+            PortRange('42-4242', strict=True).bounds, (42, 4242))
+        self.assertEqual(
+            PortRange([42, 4242], strict=True).bounds, (42, 4242))
+        self.assertEqual(
+            PortRange(['42', '4242'], strict=True).bounds, (42, 4242))
 
         # Single port.
         self.assertEqual(PortRange('42', strict=True).bounds, (42, 42))

@@ -2,8 +2,8 @@ ChangeLog
 =========
 
 
-`2.0.0 (unreleased) <https://github.com/scaleway/port-range/compare/v1.0.5...develop>`_
----------------------------------------------------------------------------------------
+`2.0.0 (2015-12-19) <https://github.com/scaleway/port-range/compare/v1.0.5...v2.0.0>`_
+--------------------------------------------------------------------------------------
 
 * Refactor parsing. Makes normal mode stricter and ``strict`` mode more
   rigorous.

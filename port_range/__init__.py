@@ -27,7 +27,7 @@ try:
 except NameError:  # pragma: no cover
     basestring = (str, bytes)  # pylint: disable=C0103
 
-__version__ = '2.0.0'
+__version__ = '2.0.1'
 
 
 class PortRange(object):

@@ -1,31 +1,31 @@
-port-range
+Port Range
 ==========
 
 Port range with support of CIDR-like notation.
 
-Stable release: |release| |license| |dependencies| |popularity|
+Stable release: |release| |versions| |license| |dependencies|
 
-Development: |build| |quality| |coverage|
+Development: |build| |coverage| |quality|
 
-.. |release| image:: https://img.shields.io/pypi/v/port-range.svg?style=flat
+.. |release| image:: https://img.shields.io/pypi/v/port-range.svg
     :target: https://pypi.python.org/pypi/port-range
     :alt: Last release
-.. |license| image:: https://img.shields.io/pypi/l/port-range.svg?style=flat
-    :target: http://opensource.org/licenses/BSD-2-Clause
+.. |versions| image:: https://img.shields.io/pypi/pyversions/port-range.svg
+    :target: https://pypi.python.org/pypi/port-range
+    :alt: Python versions
+.. |license| image:: https://img.shields.io/pypi/l/port-range.svg
+    :target: https://opensource.org/licenses/BSD-2-Clause
     :alt: Software license
-.. |popularity| image:: https://img.shields.io/pypi/dm/port-range.svg?style=flat
-    :target: https://pypi.python.org/pypi/port-range#downloads
-    :alt: Popularity
-.. |dependencies| image:: https://img.shields.io/requires/github/scaleway/port-range/master.svg?style=flat
+.. |dependencies| image:: https://requires.io/github/scaleway/port-range/requirements.svg?branch=master
     :target: https://requires.io/github/scaleway/port-range/requirements/?branch=master
     :alt: Requirements freshness
-.. |build| image:: https://img.shields.io/travis/scaleway/port-range/develop.svg?style=flat
+.. |build| image:: https://travis-ci.org/scaleway/port-range.svg?branch=develop
     :target: https://travis-ci.org/scaleway/port-range
     :alt: Unit-tests status
-.. |coverage| image:: https://codecov.io/github/scaleway/port-range/coverage.svg?branch=develop
+.. |coverage| image:: https://codecov.io/gh/scaleway/port-range/branch/develop/graph/badge.svg
     :target: https://codecov.io/github/scaleway/port-range?branch=develop
     :alt: Coverage Status
-.. |quality| image:: https://img.shields.io/scrutinizer/g/scaleway/port-range.svg?style=flat
+.. |quality| image:: https://scrutinizer-ci.com/g/scaleway/port-range/badges/quality-score.png?b=develop
     :target: https://scrutinizer-ci.com/g/scaleway/port-range/?branch=develop
     :alt: Code Quality
 
@@ -55,6 +55,19 @@ Parse and normalize port ranges:
     (42, 4242)
     >>> str(pr)
     '42-4242'
+
+Enforce strong validatation in ``strict`` mode:
+
+.. code-block:: python
+
+    >>> PortRange(' 4242-42 ', strict=True)
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "port_range/__init__.py", line 62, in __init__
+        self.port_from, self.port_to = self.parse(port_range)
+      File "port_range/__init__.py", line 109, in parse
+        raise ValueError("Invalid reversed port range.")
+    ValueError: Invalid reversed port range.
 
 Access to decimal-representation properties:
 

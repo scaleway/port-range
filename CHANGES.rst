@@ -27,7 +27,7 @@ ChangeLog
 * Enforce ``pycodestyle`` checks in Travis CI jobs.
 * Test production of packages in Travis CI jobs.
 * Always check for package metadata in Travis CI jobs.
-* Make wheels generated under Python 2 environnment available for Python 3 too.
+* Make wheels generated under Python 2 environment available for Python 3 too.
 * Add link to full changelog in package's long description.
 
 

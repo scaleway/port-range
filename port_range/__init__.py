@@ -45,11 +45,11 @@ class PortRange(object):
     CIDR_SEP = '/'
     RANGE_SEP = '-'
 
-    # Max port lenght, in bits.
-    port_lenght = 16
+    # Max port length, in bits.
+    port_length = 16
     # Max port range integer values
     port_min = 1
-    port_max = (2 ** port_lenght) - 1
+    port_max = (2 ** port_length) - 1
 
     # Base values on which all other properties are computed.
     port_from = None
@@ -157,13 +157,13 @@ class PortRange(object):
 
     @classmethod
     def _nearest_power_of_two(cls, value):
-        """ Return nearsest power of 2. """
+        """ Return nearest power of 2. """
         return int(2 ** math.floor(math.log(value, 2)))
 
     @classmethod
     def _mask(cls, prefix):
         """ Compute the mask. """
-        return cls.port_lenght - prefix
+        return cls.port_length - prefix
 
     @classmethod
     def _raw_upper_bound(cls, base, prefix):
@@ -175,11 +175,11 @@ class PortRange(object):
         # Validates base and prefix values.
         if not self.port_min <= base <= self.port_max:
             raise ValueError("Port base out of bounds.")
-        if not 1 <= prefix <= self.port_lenght:
+        if not 1 <= prefix <= self.port_length:
             raise ValueError("CIDR-like prefix out of bounds.")
 
         # Disallow offsets in strict mode.
-        if (self.strict and prefix != self.port_lenght
+        if (self.strict and prefix != self.port_length
                 and not self._is_power_of_two(base)):
             raise ValueError("Port base is not a power of two.")
 
@@ -209,7 +209,7 @@ class PortRange(object):
         port_delta = self.port_to - self.port_from + 1
         if not self._is_power_of_two(port_delta):
             return None
-        return self.port_lenght - int(math.log(port_delta, 2))
+        return self.port_length - int(math.log(port_delta, 2))
 
     @property
     def mask(self):

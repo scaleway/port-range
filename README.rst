@@ -56,7 +56,7 @@ Parse and normalize port ranges:
     >>> str(pr)
     '42-4242'
 
-Enforce strong validatation in ``strict`` mode:
+Enforce strong validation in ``strict`` mode:
 
 .. code-block:: python
 

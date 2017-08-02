@@ -5,7 +5,7 @@ ChangeLog
 `2.0.1 (unreleased) <https://github.com/scaleway/port-range/compare/v2.0.0...develop>`_
 ---------------------------------------------------------------------------------------
 
-* No changes yet.
+* Rename ``port_lenght`` property to ``port_length``.
 
 
 `2.0.0 (2015-12-19) <https://github.com/scaleway/port-range/compare/v1.0.5...v2.0.0>`_

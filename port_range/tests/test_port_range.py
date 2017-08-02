@@ -45,7 +45,7 @@ class TestPortRange(unittest.TestCase):
         self.assertEqual(PortRange(set([4242, 42])).bounds, (42, 4242))
         self.assertEqual(PortRange(set(['4242', '42'])).bounds, (42, 4242))
 
-        # Invalid types and lenght.
+        # Invalid types and length.
         self.assertRaises(ValueError, PortRange, [None, 42])
         self.assertRaises(ValueError, PortRange, [42, None])
         self.assertRaises(ValueError, PortRange, [42, 32, 3])
@@ -75,7 +75,7 @@ class TestPortRange(unittest.TestCase):
         # self.assertRaises(ValueError, PortRange, set([4242, 42]), True)
         # self.assertRaises(ValueError, PortRange, set(['4242', '42']), True)
 
-        # Invalid types and lenght.
+        # Invalid types and length.
         self.assertRaises(ValueError, PortRange, [None, 42], True)
         self.assertRaises(ValueError, PortRange, [42, None], True)
         self.assertRaises(ValueError, PortRange, [42, 32, 3], True)

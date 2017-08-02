@@ -2,6 +2,12 @@ ChangeLog
 =========
 
 
+`2.1.0 (2017-08-02) <https://github.com/scaleway/port-range/compare/v2.0.0...v2.1.0>`_
+--------------------------------------------------------------------------------------
+
+* Rename ``port_lenght`` property to ``port_length``.
+
+
 `2.0.0 (2015-12-19) <https://github.com/scaleway/port-range/compare/v1.0.5...v2.0.0>`_
 --------------------------------------------------------------------------------------
 
@@ -21,7 +27,7 @@ ChangeLog
 * Enforce ``pycodestyle`` checks in Travis CI jobs.
 * Test production of packages in Travis CI jobs.
 * Always check for package metadata in Travis CI jobs.
-* Make wheels generated under Python 2 environnment available for Python 3 too.
+* Make wheels generated under Python 2 environment available for Python 3 too.
 * Add link to full changelog in package's long description.
 
 

@@ -1,7 +1,7 @@
 Port Range
 ==========
 
-Like Python's standard library [`ipaddress` package](https://docs.python.org/dev/library/ipaddress.html), but [for ports](https://en.wikipedia.org/wiki/Port_(computer_networking)).
+Like Python's standard library `ipaddress package <https://docs.python.org/dev/library/ipaddress.html>`_, but `for ports <https://en.wikipedia.org/wiki/Port_(computer_networking)>`_.
 
 Stable release: |release| |versions| |license| |dependencies|
 

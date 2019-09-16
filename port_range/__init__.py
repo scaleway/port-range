@@ -15,7 +15,10 @@ from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
 import math
-from collections import Iterable
+try:
+    from collections.abc import Iterable  # noqa
+except ImportError:  # pragma: no cover
+    from collections import Iterable  # noqa
 
 try:
     from itertools import imap as iter_map

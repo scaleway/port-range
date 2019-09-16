@@ -119,6 +119,13 @@ class PortRange(object):
 
         return port_from, port_to
 
+    def __eq__(self, other):
+        """ Compare two port ranges. """
+        return self.bounds == other.bounds
+
+    def __hash__(self):
+        return self.__str__().__hash__()
+
     def __repr__(self):
         """ Print all components of the range. """
         return (

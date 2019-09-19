@@ -2,10 +2,12 @@ ChangeLog
 =========
 
 
-`2.1.1 (unreleased) <https://github.com/scaleway/port-range/compare/v2.1.0...develop>`_
+`2.2.0 (2019-09-19) <https://github.com/scaleway/port-range/compare/v2.1.0...v2.2.0>`_
 ---------------------------------------------------------------------------------------
 
- * No changes yet.
+ * Fix Travis build
+ * Implement equality and hash operators 
+ * Fix deprecated collections warning
 
 
 `2.1.0 (2017-08-02) <https://github.com/scaleway/port-range/compare/v2.0.0...v2.1.0>`_

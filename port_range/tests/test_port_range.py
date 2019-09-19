@@ -81,6 +81,19 @@ class TestPortRange(unittest.TestCase):
         self.assertRaises(ValueError, PortRange, [42, 32, 3], True)
         self.assertRaises(ValueError, PortRange, [42, None, 32, 3, -4], True)
 
+    def test_equality_and_hash(self):
+        self.assertEqual(PortRange('80'), PortRange('80'))
+        self.assertEqual(PortRange('80-81'), PortRange('80-81'))
+        self.assertNotEqual(PortRange('80'), PortRange('80-81'))
+        self.assertEqual(PortRange('1027/15'), PortRange('1027/15'))
+        self.assertEqual(hash(PortRange('80')), hash(PortRange('80')))
+        self.assertEqual(hash(PortRange('80-81')), hash(PortRange('80-81')))
+        self.assertNotEqual(hash(PortRange('80')), hash(PortRange('80-81')))
+        self.assertEqual(
+            hash(PortRange('1027/15')),
+            hash(PortRange('1027/15'))
+        )
+
     def test_cidr_properties(self):
         port = PortRange('1027/15')
         self.assertEqual(port.base, 1027)

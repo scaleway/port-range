@@ -8,7 +8,9 @@
 
 # Packages
 *.egg
+*.eggs
 *.egg-info
+build/
 dist
 eggs
 parts

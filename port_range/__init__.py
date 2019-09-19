@@ -15,7 +15,10 @@ from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
 import math
-from collections import Iterable
+try:
+    from collections.abc import Iterable  # noqa
+except ImportError:  # pragma: no cover
+    from collections import Iterable  # noqa
 
 try:
     from itertools import imap as iter_map
@@ -27,7 +30,7 @@ try:
 except NameError:  # pragma: no cover
     basestring = (str, bytes)  # pylint: disable=C0103
 
-__version__ = '2.1.0'
+__version__ = '2.2.0'
 
 
 class PortRange(object):
@@ -118,6 +121,13 @@ class PortRange(object):
         port_to = min([port_to, self.port_max])
 
         return port_from, port_to
+
+    def __eq__(self, other):
+        """ Compare two port ranges. """
+        return self.bounds == other.bounds
+
+    def __hash__(self):
+        return self.__str__().__hash__()
 
     def __repr__(self):
         """ Print all components of the range. """
